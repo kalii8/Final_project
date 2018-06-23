@@ -18,3 +18,6 @@ Route::group(['prefix' => 'ajax'], function() {
 Route::get('/{path?}', function () {
     return view('web');
 });
+
+Route::get('/results', 'StyleController@search');
+Route::get('/results/{style_id}', 'StyleController@show');
