@@ -15,9 +15,11 @@ Route::group(['prefix' => 'ajax'], function() {
     // all routes that don't need to go to react-router
 });
 
-Route::get('/{path?}', function () {
-    return view('web');
-});
+// Route::get('/{path?}', function () {
+//     return view('web');
+// });
 
-Route::get('/results', 'StyleController@search');
-Route::get('/results/{style_id}', 'StyleController@show');
+Route::get('/test', 'HomeController@index');
+Route::post('/test', 'SearchController@store');
+Route::get('/test/results', 'StyleController@index');
+Route::get('/test/results/{style_id}', 'StyleController@show');
