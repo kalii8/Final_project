@@ -6,21 +6,15 @@
 FORM
 
 {{ csrf_field() }}
-<div class="form-group prl-5">
-{!! Form::label('alcohol_level', 'Alcohol level') !!}
-{!! Form::text('alcohol_level', '') !!}
-</div>
 
+@foreach ($attributes as $attribute)
 
 <div class="form-group prl-5">
-{!! Form::label('color_level', 'Color level') !!}
-{!! Form::text('color_level', '') !!}
+{!! Form::label($attribute->attri_name, $attribute->attri_name) !!}
+{!! Form::text($attribute->attri_name, '') !!}
 </div>
 
-<div class="form-group prl-5">
-{!! Form::label('biterness_level', 'Biterness level') !!}
-{!! Form::text('biterness_level', '') !!}
-</div>
+@endforeach
 
 <div class="form-group prl-5">
 {!! Form::submit('Search') !!}
