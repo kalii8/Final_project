@@ -9,7 +9,7 @@ class StyleController extends Controller
     //this method will retrieve the wheel input information, search for the matching style attributes and return those results on the results page using API
     public function index()
     {
-    
+        //number of categories from the database
     }
     
     public function search()
