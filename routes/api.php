@@ -23,6 +23,8 @@ Route::get('/attribute', 'Api\AttributeController@index');
 Route::get('/attribute/searchattribute', 'Api\AttributeController@searchAttribute');
 Route::get('/style/by_color', 'Api\StyleController@search');
 Route::get('/style/category', 'Api\StyleController@category');
+Route::get('/style/user', 'Api\StyleController@user');
+
 
 
 

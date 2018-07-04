@@ -36,5 +36,10 @@ class StyleController extends Controller
         return $category;       
     }
 
+    //Sends API for the User Profile
+    public function user() {
+        $user = User::all();
+        return $user;
+    }
     
 }
