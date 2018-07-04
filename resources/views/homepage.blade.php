@@ -10,8 +10,8 @@ FORM
 @foreach ($attributes as $attribute)
 
 <div class="form-group prl-5">
-{!! Form::label($attribute->attri_name, $attribute->attri_name) !!}
-{!! Form::text($attribute->attri_name, '') !!}
+{!! Form::label($attribute->attribute_name, $attribute->attribute_name) !!}
+{!! Form::text($attribute->attribute_name, '') !!}
 </div>
 
 @endforeach
