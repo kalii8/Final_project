@@ -9,6 +9,7 @@ use App\Style;
 use App\Attribute;
 use App\AttributeLevel;
 use App\Category;
+use App\User;
 
 class StyleController extends Controller
 {
@@ -38,8 +39,8 @@ class StyleController extends Controller
 
     //Sends API for the User Profile
     public function user() {
-        $user = User::all();
-        return $user;
+        $users = User::all();
+        return $users;
     }
     
 }
