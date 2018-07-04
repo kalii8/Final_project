@@ -13,7 +13,7 @@ class Style extends Model
         return $this->belongsTo('App\Category');
     }
 
-    public function style_attributes(){
+    public function styleAttribute(){
         return $this->hasMany('App\StyleAttribute', 'style_id');
     }
 }

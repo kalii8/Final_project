@@ -18,12 +18,28 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //All API routes
-Route::get('/style', 'Api\StyleController@index');
+//API for homepage
 Route::get('/attribute', 'Api\AttributeController@index');
-Route::get('/attribute/searchattribute', 'Api\AttributeController@searchAttribute');
-Route::get('/style/by_color', 'Api\StyleController@search');
+Route::get('/attribute/level', 'Api\AttributeController@Level');
+
+//API for searches and results page
+Route::get('/style/searchstyleattribute', 'Api\StyleController@searchStyleAttribute');
+Route::get('/style/returnstyleattribute', 'Api\StyleController@returnStyleAttribute');
+Route::get('/style', 'Api\StyleController@index');
+Route::get('/style/stylewithlevel', 'Api\StyleController@styleWithLevel');
+Route::get('/attribute/attributelevel', 'Api\AttributeController@attributeLevel');
+
+//All Rest API for BEER LIST Page
+Route::get('/style/by_color', 'Api\StyleController@searchColor');
 Route::get('/style/category', 'Api\StyleController@category');
-Route::get('/style/user', 'Api\StyleController@user');
+
+//API for user profiles
+Route::get('/user', 'Api\UserController@index');
+
+
+
+
+
 
 
 
