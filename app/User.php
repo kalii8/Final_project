@@ -28,7 +28,6 @@ class User extends Authenticatable
     ];
 
     public function search() {
-
         return $this->hasMany('App\Search', 'user_id');
     }
 }

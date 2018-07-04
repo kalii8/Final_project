@@ -17,4 +17,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//All API routes
 Route::get('/style', 'Api\StyleController@index');
+Route::get('/attribute', 'Api\AttributeController@index');
+Route::get('/attribute/searchattribute', 'Api\AttributeController@searchAttribute');
+Route::get('/style/by_color', 'Api\StyleController@search');
+Route::get('/style/category', 'Api\StyleController@category');
+
+
+
+
+

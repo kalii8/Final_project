@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     //
-    protected $table = 'categories';
+    protected $table = 'category';
 
     public function style(){
 
-        return $this->hasMany('App\Style', 'category_id');
+        return $this->hasMany('App\Style');
     }
 }

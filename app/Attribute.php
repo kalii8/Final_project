@@ -8,13 +8,13 @@ class Attribute extends Model
 {
     protected $table = 'attributes';
 
-    public function styleAttribute() {
+    public function styleAttributes() {
 
         return $this->hasMany('App\StyleAttribute', 'attri_id');
     }
 
-    public function attributeLevel() {
+    public function attributeLevels() {
 
-        return $this->hasMany('App\AttributeLevel', 'attri_id');
+        return $this->hasMany('App\AttributeLevel', 'attribute_id');
     }
 }
