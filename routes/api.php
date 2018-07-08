@@ -36,6 +36,9 @@ Route::get('/style/category', 'Api\StyleController@category');
 //API for user profiles
 Route::get('/user', 'Api\UserController@index');
 
+//API Get input values from search
+Route::post('/search', 'SearchController@store');
+
 
 
 
