@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class SearchStyleAttribute extends Model
 {
     //
-    //protected $table = 'categories';
+    protected $table = 'search_attri';
+    protected $guarded = [];
+    public $timestamps = false;
 
+    
     public function search() {
 
         return $this->belongTo('App\Search');

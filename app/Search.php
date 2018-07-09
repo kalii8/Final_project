@@ -20,4 +20,5 @@ class Search extends Model
 
         return $this->hasMany('App\SearchStyleAttribute', 'search_id');
     }
+
 }
