@@ -17,12 +17,20 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'user_name' => 'required|unique',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email|unique',
+            'password' => 'required|min:6'
+        ]);
+
         User::create([
             'user_name' => $request->input('user_name'),
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'email' => $request->input('email'),
-            'password' => $request->input('password'),
+            'password' => $request->input('password')
          ]);
     }
 }
