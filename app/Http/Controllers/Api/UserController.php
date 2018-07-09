@@ -14,4 +14,15 @@ class UserController extends Controller
         $users = User::all();
         return $users;
     }
+
+    public function store(Request $request)
+    {
+        User::create([
+            'user_name' => $request->input('user_name'),
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+         ]);
+    }
 }

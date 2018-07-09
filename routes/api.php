@@ -39,6 +39,10 @@ Route::get('/user', 'Api\UserController@index');
 //API Get input values from search
 Route::post('/search', 'SearchController@store');
 
+//User signup
+
+Route::post('/user', 'Api\UserController@store');
+
 
 
 

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Search;
-use App\SearchAttri;
+use App\SearchStyleAttribute;
+
 
 class SearchController extends Controller
 {
@@ -12,11 +13,8 @@ class SearchController extends Controller
     public function store(Request $request)
     {
 
-        SearchAttri::create([
-            'attribute_id' => $request->input('attribute_id'),
-            'min' => $request->input('min'),
-            'max' => $request->input('max'),
-            'search_id' => $request->input('search_id')
+        Search::create([
+            'user_id' => $request->input('user_id')
 
         //     alcohol: null,
         //     color: null,
@@ -28,6 +26,26 @@ class SearchController extends Controller
         //     smoke: null, 
         //     sweet: null, 
         //     sour: null,
+         ]);
+
+         SearchStyleAttribute::create([
+             'search_id' => SearchStyleAttribute::all()->search,
+             'attribute_id' => $request->input('attribute_id'),
+             
+
+             //'alcohol' => $request->input('alcohol')
+
+             
+
+             //     color: null,
+             //     bitterness: null,
+             //     aroma: null,
+             //     hop: null, 
+             //     malt: null,
+             //     fruit: null, 
+             //     smoke: null, 
+             //     sweet: null, 
+             //     sour: null,
          ]);
 
         return redirect()->action('StyleController@index');
