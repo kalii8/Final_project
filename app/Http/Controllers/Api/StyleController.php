@@ -23,12 +23,23 @@ class StyleController extends Controller
     //Sends API for all Style Attributes. This will be used for the wheel search.
     public function returnStyleAttribute() {
         $returnStyleAttribute = StyleAttribute::with('style')->get();
+        return response()
+            ->json($returnStyleAttribute)
+            ->withHeaders([
+                'Access-Control-Allow-Origin' => '*'
+            ]);
         return $returnStyleAttribute;
+
     }
 
     //Sends API for all info in style table.  This will be used for the Beer Styles Results.
     public function index(){
         $styles = Style::all();
+        return response()
+        ->json($styles)
+        ->withHeaders([
+            'Access-Control-Allow-Origin' => '*'
+        ]);
         return $styles;
     }
 
@@ -48,7 +59,12 @@ class StyleController extends Controller
             ->orderBy('style_attribute.min', 'asc')
             ->orderBy('style_attribute.max', 'asc')
             ->get();
-        return $color;
+        return response()
+            ->json($color)
+            ->withHeaders([
+                'Access-Control-Allow-Origin' => '*'
+            ]);
+        // return $color;
     }
 
     //Sends API for all the categories with the beer styles in each one.  This will be used for Beer Styles List.
