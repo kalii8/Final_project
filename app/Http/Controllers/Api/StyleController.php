@@ -17,7 +17,12 @@ class StyleController extends Controller
     //Sends API for all Style Attributes. This will be used for the wheel search.
     public function searchStyleAttribute() {
         $searchStyleAttribute = StyleAttribute::all();
-        return $searchStyleAttribute;
+        return response()
+            ->json($searchStyleAttribute)
+            ->withHeaders([
+                'Access-Control-Allow-Origin' => '*'
+            ]);
+        // return $searchStyleAttribute;
     }
 
     //Sends API for all Style Attributes. This will be used for the wheel search.
@@ -28,7 +33,7 @@ class StyleController extends Controller
             ->withHeaders([
                 'Access-Control-Allow-Origin' => '*'
             ]);
-        return $returnStyleAttribute;
+        // return $returnStyleAttribute;
 
     }
 
@@ -40,14 +45,19 @@ class StyleController extends Controller
         ->withHeaders([
             'Access-Control-Allow-Origin' => '*'
         ]);
-        return $styles;
+        // return $styles;
     }
 
     //Sends API for style and includes the attribute and attribute levels
     public function styleWithLevel() {
         $styleWithLevel = Style::with('styleAttribute')
         ->get();
-        return $styleWithLevel;
+        return response()
+            ->json($styleWithLevel)
+            ->withHeaders([
+                'Access-Control-Allow-Origin' => '*'
+            ]);
+        // return $styleWithLevel;
     }
 
     //Sends API for all style attribute info by color.  This will be used for Beer Styles List.
@@ -70,7 +80,12 @@ class StyleController extends Controller
     //Sends API for all the categories with the beer styles in each one.  This will be used for Beer Styles List.
     public function category() {
         $category = Category::with('style')->get();
-        return $category;       
+        return response()
+            ->json($category)
+            ->withHeaders([
+                'Access-Control-Allow-Origin' => '*'
+            ]);
+        // return $category;       
     }
 
 }

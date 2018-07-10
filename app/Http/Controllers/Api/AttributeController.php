@@ -14,21 +14,33 @@ class AttributeController extends Controller
     //Sends API for all attribute names.  This is for the Beer wheel names.
     public function index() {
         $attribute = Attribute::all();
-        return $attribute;
+        return response()
+            ->json($attribute)
+            ->withHeaders([
+                'Access-Control-Allow-Origin' => '*'
+            ]);
+        // return $attribute;
     }
 
     //Sends API for all attribute names.  This is for the Beer wheel names.
     public function level() {
         $level = AttributeLevel::all();
-        return $level;
+        return response()
+            ->json($level)
+            ->withHeaders([
+                'Access-Control-Allow-Origin' => '*'
+            ]);
+        // return $level;
     }
 
     //Sends API for all the attribute names with the attribute levels for each.  This is for the Beer Styles Results when expanded.
     public function attributeLevel() {
         $attributeLevel = Attribute::with('attributeLevels')->get();
-        return $attributeLevel;
+        return response()
+            ->json($attributeLevel)
+            ->withHeaders([
+                'Access-Control-Allow-Origin' => '*'
+            ]);
+        // return $attributeLevel;
     }
-
-   
-
 }
