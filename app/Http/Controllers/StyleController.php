@@ -11,10 +11,7 @@ class StyleController extends Controller
     {
        $results = \App\Style::where('id', 8)->first();
 
-        $view = view('results');
-        $view->results = $results;
-
-        return $view;
+        return $results;
     
     }
     
