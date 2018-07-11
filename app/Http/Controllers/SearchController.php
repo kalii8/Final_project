@@ -18,12 +18,13 @@ class SearchController extends Controller
             'user_id' => $request->input('user_id')
          ]);
 
-        $attribute = Attribute::where('attribute_name', $request->input('attribute_name'))->first();
+        //  $attribute = Attribute::where('attribute_name', $request->input('attribute_name'))->first();
 
-         SearchStyleAttribute::create([
-             'search_id' => $search->id,
-             'attribute_id' => $attribute->id,
-             'min' => $request->input('min')
+        //  SearchStyleAttribute::create([
+        //      'search_id' => $search->id,
+        //      'attribute_id' => $attribute->id,
+        //      'min' => $request->input('min')
+             
              
              //'alcohol' => $request->input('alcohol')
 
@@ -36,7 +37,7 @@ class SearchController extends Controller
              //     smoke: null, 
              //     sweet: null, 
              //     sour: null,
-         ]);
+        //  ]);
 
         return redirect()->action('StyleController@index');
     }
