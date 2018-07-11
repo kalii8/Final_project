@@ -13,9 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 //All API routes
 //API for homepage
@@ -36,12 +36,14 @@ Route::get('/style/category', 'Api\StyleController@category');
 //API for user profiles
 Route::get('/user', 'Api\UserController@index');
 
-//API Get input values from search
-Route::post('/search', 'SearchController@store');
+//API get input values from search
+Route::post('/search', 'StyleController@index');
 
 //User signup
 
 Route::post('/user', 'Api\UserController@store');
+
+//Route::post('/searchinput', 'apiSearchController@store');
 
 
 

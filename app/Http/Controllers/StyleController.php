@@ -7,10 +7,28 @@ use Illuminate\Http\Request;
 class StyleController extends Controller
 {
     //this method will retrieve the wheel input information, search for the matching style attributes and return those results on the results page using API
-    public function index()
-    {
-       $results = \App\Style::where('id', 8)->first();
+    public function index(Request $request)
 
+    {
+        $alcohol_level = $request->input('alcohol');
+        $color_level = $request->input('color');
+        $biterness_level = $request->input('biterness');
+      // $results = \App\StyleAttribute::where('id', $alcohol_level);
+           // where('attribute_name', $request->input('attribute_name'));
+
+        $results = \App\StyleAttribute::
+                    where([
+                        ['attribute_id', '=', 1],
+                        ['min', '<=', $alcohol_level],
+                        ['max', '>=', $alcohol_level]
+                    ])
+                    // ->orWhere([
+                    //     ['attribute_id', '=', 2],
+                    //     ['min', '<=', $color_level],
+                    //     ['max', '>=', $color_level]
+                    // ])
+                    ->get();       
+        
         return $results;
     
     }

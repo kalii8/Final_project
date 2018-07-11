@@ -20,6 +20,6 @@ Route::group(['prefix' => 'ajax'], function() {
 // });
 
 Route::get('/test', 'HomeController@index');
-Route::post('/test', 'SearchController@store');
+//Route::post('/test', 'SearchController@store');
 Route::get('/test/results', 'StyleController@index');
 Route::get('/test/results/{style_id}', 'StyleController@show');
