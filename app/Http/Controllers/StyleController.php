@@ -7,11 +7,86 @@ use Illuminate\Http\Request;
 class StyleController extends Controller
 {
     //this method will retrieve the wheel input information, search for the matching style attributes and return those results on the results page using API
-    public function index()
-    {
-       $results = \App\Style::where('id', 8)->first();
+    public function index(Request $request)
 
-        return $results;
+    {
+        $alcohol_level = $request->input('alcohol');
+        $color_level = $request->input('color');
+        $biterness_level = $request->input('biterness');
+        $aroma_level = $request->input('aroma');
+        $hop_level = $request->input('hop');
+        $malt_level = $request->input('malt');
+        $fruit_level = $request->input('fruit');
+     
+      // $results = \App\StyleAttribute::where('id', $alcohol_level);
+
+        $alcohol = \App\StyleAttribute::
+                    where([
+                        ['attribute_id', '=', 1],
+                        ['min', '<=', $alcohol_level],
+                        ['max', '>=', $alcohol_level]
+                    ])->pluck('style_id')
+                    ->toArray(); 
+        
+        
+
+        $color = \App\StyleAttribute::where([
+                         ['attribute_id', '=', 2],
+                         ['min', '<=', $color_level],
+                         ['max', '>=', $color_level]
+                     ])
+                    ->pluck('style_id')
+                    ->toArray(); ;
+
+        $biterness = \App\StyleAttribute::where([
+                        ['attribute_id', '=', 3],
+                        ['min', '<=', $biterness_level],
+                        ['max', '>=', $biterness_level]
+                    ])
+                   ->pluck('style_id')
+                   ->toArray();
+
+        $aroma = \App\StyleAttribute::where([
+                    ['attribute_id', '=', 4],
+                    ['min', '<=', $aroma_level],
+                    ['max', '>=', $aroma_level]
+                ])
+               ->pluck('style_id')
+               ->toArray();
+
+        $hop = \App\StyleAttribute::where([
+                ['attribute_id', '=', 5],
+                ['min', '<=', $hop_level],
+                ['max', '>=', $hop_level]
+            ])
+           ->pluck('style_id')
+           ->toArray();
+
+        $malt = \App\StyleAttribute::where([
+                    ['attribute_id', '=', 6],
+                    ['min', '<=', $malt_level],
+                    ['max', '>=', $malt_level]
+                ])
+            ->pluck('style_id')
+            ->toArray();
+
+        $fruit = \App\StyleAttribute::where([
+                    ['attribute_id', '=', 7],
+                    ['min', '<=', $fruit_level],
+                    ['max', '>=', $fruit_level]
+                ])
+            ->pluck('style_id')
+            ->toArray();
+        
+
+        $intersect = array_intersect($alcohol, $color, $biterness, $aroma, $malt, $hop);
+
+        return array_values($intersect);
+
+        $returnStyles = Style::all()
+            ->orberBy($style_name, $style_description)
+            ->get();
+        
     
     }
     
