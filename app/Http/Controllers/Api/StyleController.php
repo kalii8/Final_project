@@ -88,4 +88,14 @@ class StyleController extends Controller
         // return $category;       
     }
 
+    public function getOneStyle($id) {
+        $oneStyle = Style::find($id);
+        return response()
+            ->json($oneStyle)
+            ->withHeaders([
+                'Access-Control-Allow-Origin' => '*'
+            ]);
+        // return $category;       
+    }
+
 }
