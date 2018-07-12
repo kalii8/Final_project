@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Style;
 
 class StyleController extends Controller
 {
@@ -16,7 +17,7 @@ class StyleController extends Controller
         $aroma_level = $request->input('aroma');
         $hop_level = $request->input('hop');
         $malt_level = $request->input('malt');
-        $fruit_level = $request->input('fruit');
+        // $fruit_level = $request->input('fruit');
      
       // $results = \App\StyleAttribute::where('id', $alcohol_level);
 
@@ -70,26 +71,31 @@ class StyleController extends Controller
             ->pluck('style_id')
             ->toArray();
 
-        $fruit = \App\StyleAttribute::where([
-                    ['attribute_id', '=', 7],
-                    ['min', '<=', $fruit_level],
-                    ['max', '>=', $fruit_level]
-                ])
-            ->pluck('style_id')
-            ->toArray();
+        // $fruit = \App\StyleAttribute::where([
+        //             ['attribute_id', '=', 7],
+        //             ['min', '<=', $fruit_level],
+        //             ['max', '>=', $fruit_level]
+        //         ])
+        //     ->pluck('style_id')
+        //     ->toArray();
         
 
         $intersect = array_intersect($alcohol, $color, $biterness, $aroma, $malt, $hop);
 
-        return array_values($intersect);
+        $arrayEquals = array_values($intersect);
 
-        $returnStyles = Style::all()
-            ->orberBy($style_name, $style_description)
-            ->get();
-        
+        $returnStyles = Style::whereIn('id', $arrayEquals)
+            ->pluck('style_name', 'description');
+
+        return response()
+            ->json($returnStyles)
+            ->withHeaders([
+                'Access-Control-Allow-Origin' => '*'
+            ]);
     
     }
     
+
     public function search()
     {
         //Connect to style_attribute table
