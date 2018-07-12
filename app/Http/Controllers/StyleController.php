@@ -21,7 +21,8 @@ class StyleController extends Controller
      
       // $results = \App\StyleAttribute::where('id', $alcohol_level);
 
-        $alcohol = \App\StyleAttribute::
+        $alcohol = $alcohol_level === null ? [] :
+        \App\StyleAttribute::
                     where([
                         ['attribute_id', '=', 1],
                         ['min', '<=', $alcohol_level],
@@ -31,15 +32,15 @@ class StyleController extends Controller
         
         
 
-        $color = \App\StyleAttribute::where([
-                         ['attribute_id', '=', 2],
-                         ['min', '<=', $color_level],
-                         ['max', '>=', $color_level]
-                     ])
-                    ->pluck('style_id')
-                    ->toArray(); ;
+        $color = $color_level === null ? [] : \App\StyleAttribute::where([
+                ['attribute_id', '=', 2],
+                ['min', '<=', $color_level],
+                ['max', '>=', $color_level]
+            ])
+        ->pluck('style_id')
+        ->toArray(); ;
 
-        $biterness = \App\StyleAttribute::where([
+        $biterness = $biterness_level === null ? [] : \App\StyleAttribute::where([
                         ['attribute_id', '=', 3],
                         ['min', '<=', $biterness_level],
                         ['max', '>=', $biterness_level]
@@ -47,7 +48,7 @@ class StyleController extends Controller
                    ->pluck('style_id')
                    ->toArray();
 
-        $aroma = \App\StyleAttribute::where([
+        $aroma = $aroma_level === null ? [] : App\StyleAttribute::where([
                     ['attribute_id', '=', 4],
                     ['min', '<=', $aroma_level],
                     ['max', '>=', $aroma_level]
@@ -55,7 +56,8 @@ class StyleController extends Controller
                ->pluck('style_id')
                ->toArray();
 
-        $hop = \App\StyleAttribute::where([
+        $hop = $hop_level === null ? [] :
+        \App\StyleAttribute::where([
                 ['attribute_id', '=', 5],
                 ['min', '<=', $hop_level],
                 ['max', '>=', $hop_level]
@@ -63,7 +65,7 @@ class StyleController extends Controller
            ->pluck('style_id')
            ->toArray();
 
-        $malt = \App\StyleAttribute::where([
+        $malt = $malt_level === null ? [] : \App\StyleAttribute::where([
                     ['attribute_id', '=', 6],
                     ['min', '<=', $malt_level],
                     ['max', '>=', $malt_level]
