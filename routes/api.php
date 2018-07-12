@@ -29,6 +29,8 @@ Route::get('/style', 'Api\StyleController@index');
 Route::get('/style/stylewithlevel', 'Api\StyleController@styleWithLevel');
 Route::get('/attribute/attributelevel', 'Api\AttributeController@attributeLevel');
 
+Route::get('/style/getOneStyle/{id}', 'Api\StyleController@getOneStyle');
+
 //All Rest API for BEER LIST Page
 Route::get('/style/by_color', 'Api\StyleController@searchColor');
 Route::get('/style/category', 'Api\StyleController@category');
