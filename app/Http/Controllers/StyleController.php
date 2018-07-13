@@ -48,7 +48,7 @@ class StyleController extends Controller
                    ->pluck('style_id')
                    ->toArray();
 
-        $aroma = $aroma_level === null ? [] : App\StyleAttribute::where([
+        $aroma = $aroma_level === null ? [] : \App\StyleAttribute::where([
                     ['attribute_id', '=', 4],
                     ['min', '<=', $aroma_level],
                     ['max', '>=', $aroma_level]
@@ -87,7 +87,7 @@ class StyleController extends Controller
         $arrayEquals = array_values($intersect);
 
         $returnStyles = Style::whereIn('id', $arrayEquals)
-            ->pluck('style_name', 'description');
+            ->get();
 
         return response()
             ->json($returnStyles)
@@ -121,10 +121,10 @@ class StyleController extends Controller
         //Connect to the Attribute Table, we want to use the attri_id and the range (level/minmax) to return the 10 attribute values (i.e. gold to amber copper).  
 
         //Output information to API
-        $view= view('style');
-        $style = \App\Style::findOrFail($style_id);
-        $view->style = $style;
-        return $view  ;
+        // $view= view('style');
+        // $style = \App\Style::findOrFail($style_id);
+        // $view->style = $style;
+        // return $view  ;
 
     }
 }
